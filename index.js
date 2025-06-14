@@ -15,7 +15,8 @@ app.use(cors(
     {
         origin: ['http://localhost:3000',
             'http://localhost:3000',
-
+            "https://k-blogify.vercel.app",
+            "https://k-blogify-kamrul-islam-apurbas-projects.vercel.app"
         ],
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization'],
