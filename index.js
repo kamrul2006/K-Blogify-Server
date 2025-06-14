@@ -69,22 +69,23 @@ async function run() {
         })
 
 
-        //----------add article--------
+
+        //----------add POSTS--------
         app.post('/Posts', async (req, res) => {
             const review = req.body
             const result = await PostsCollection.insertOne(review)
             res.send(result)
         })
 
-        //---------- DELETE Articles by id----------------
+        //---------- DELETE POSTSs by id----------------
         app.delete("/POSTS/:id", async (req, res) => {
             const { id } = req.params;
             try {
                 const result = await POSTSCollection.deleteOne({ _id: new ObjectId(id) });
                 if (result.deletedCount === 1) {
-                    res.status(200).json({ message: "Article deleted successfully." });
+                    res.status(200).json({ message: "POSTS deleted successfully." });
                 } else {
-                    res.status(404).json({ message: "Article not found." });
+                    res.status(404).json({ message: "POSTS not found." });
                 }
             } catch (err) {
                 console.error("Delete Error:", err);
@@ -92,7 +93,7 @@ async function run() {
             }
         });
 
-        // ------------- approve article---------------
+        // ------------- approve POSTS---------------
         app.patch('/POSTS/approve/:id', async (req, res) => {
             const id = req.params.id;
             try {
@@ -102,12 +103,12 @@ async function run() {
                 );
                 res.send(result);
             } catch (error) {
-                res.status(500).send({ message: 'Failed to approve article' });
+                res.status(500).send({ message: 'Failed to approve POSTS' });
             }
         });
 
 
-        // ----------------- make article general-------------
+        // ----------------- make POSTS general-------------
         app.patch('/POSTS/general/:id', async (req, res) => {
             const id = req.params.id;
             try {
